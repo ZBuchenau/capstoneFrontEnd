@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="templateApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+  <body ng-controller='mainController as mc'>
+
+    <a href="http://localhost:3000/auth/google">Log In</a>
+    <a href="http://localhost:3000/logout">logout</a>
+    <a class="accounts" href="http://localhost:3000/users/analytics">Get Account IDs</a>
+
+    <!-- <input type="button" name="name" value="Log In" ng-click="mc.accounts.login()">
+    <input type="button" value="Get Account Properties" ng-click="mc.accounts.search()" /> -->
+
+
+
+    <div ng-view></div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Angular CDN -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+    <!-- Angular Routes CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular-route.js"></script>
+    <!-- Local Javascript Files -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.1/angular-cookies.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+    <script type="text/javascript" src="./js/controllers.js"></script>
+    <script type="text/javascript" src="./js/directives.js"></script>
+    <script type="text/javascript" src="./js/factories.js"></script>
+    <script type="text/javascript" src="./js/filters.js"></script>
+    <script type="text/javascript" src="./js/routes.js"></script>
+    <script type="text/javascript" src="./js/services.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
