@@ -2,9 +2,10 @@ app.factory('authInterceptor', function ($rootScope, $q, $window, localStorageSe
   return {
     request: function (config) {
       config.headers = config.headers || {};
-      if ($window.sessionStorage.token) {
-        config.headers.Authorization = 'Bearer ' + localStorageService.get('googleToken');
+      if (localStorageService.get('FiveWeightAnalytics')) {
+        config.headers.Authorization = 'Bearer ' + localStorageService.get('FiveWeightAnalytics');
       }
+      console.log(config.headers.Authorization + "Hey I'm here!!!!!!!!!");
       return config;
     },
     responseError: function (rejection) {
