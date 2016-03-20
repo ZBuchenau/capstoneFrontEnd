@@ -36,27 +36,4 @@ function homeController($scope, $log, $http, $route, localStorageService, $route
     }
   };
 
-  // vm.accounts.login = function(){
-  //   vm.show = 'awaiting login...';
-  //
-  //   $http.get("http://localhost:3000/auth/google", {
-  //       withCredentials: true,
-  //     })
-  //     .then(onSuccess, onFailure);
-  //
-  //   function onSuccess(response) {
-  //     console.log('hello');
-  //     console.log(vm.accounts.token);
-  //     //localStorageService.set('googleToken', response.data.token);
-  //
-  //     vm.display = response;
-  //   }
-  //
-  //   function onFailure(response) {
-  //     console.log('goodbye');
-  //     vm.display = response;
-  //     console.log(response.data);
-  //   }
-  // };
-
 }
