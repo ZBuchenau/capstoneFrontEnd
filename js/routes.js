@@ -17,11 +17,15 @@ app.config(function($routeProvider) {
     templateUrl: '../views/login.html',
     controller: 'accountController as ac'
   })
-  .when('/user/profile/:token/views', {
+  .when('/user/profile/', {
     // this is the page where the user will be able to see their accounts, and select which ones they will pull data for.
     // When they pull the data, the graphs will show up below the select accounts button.
     templateUrl: '../views/profile',
     controller: 'movieHandler as mh'
+  })
+  .when('/user/logout', {
+    templateUrl: '../views/logout',
+    controller: 'logoutController as lc'
   });
 
 });

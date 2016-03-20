@@ -15,12 +15,7 @@ function homeController($scope, $log, $http, $route, localStorageService, $route
 
     vm.display = 'Awaiting Response...';
 
-    $http.get('http://www.localhost:3000/users/analytics', {
-        withCredentials: true,
-        headers: {
-          xsrfCookieName: "connect.sid"
-        }
-      })
+    $http.get('http://www.localhost:3000/users/analytics')
       .then(onSuccess, onFailure);
 
     function onSuccess(response) {

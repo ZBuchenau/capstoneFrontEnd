@@ -5,20 +5,31 @@
 <form name="myForm" ng-submit="ac.submitAccountsForm()">
   <label for="account_id" ng-repeat="items in ac.account.finder">
     <input type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
-    {{items.id}}
+    {{items.name}}
   </label>
 
   <br>
+  <br>
 
-  {{ac.account.ids}}
+  <div ng-repeat="item in ac.account.approved">
+    <label for="industry_id">{{item.name}}</label>
+    <select class="industrySelector" name="industry_id" ng-model="ac.selectedIndustry">
+      <option ng-repeat="industry in ac.industries" value="ac.industries.id" placeholder="Select an Industry">{{industry.name}}</option>
+    </select>
+  </div>
 
-  <br></br>
+  <!--  -->
 
-  <input type="button" name="name" value="SUBMIT">
 
+
+
+  <input type="submit" name="name" value="SUBMIT" href='/user/profile'>
 </form>
 
-{{ac.account.approved}}
+
+
+
+
 
 <br>
 

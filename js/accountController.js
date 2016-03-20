@@ -3,12 +3,31 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, localStorageService) {
   var vm = this;
 
+  vm.selectedIndustry = [];
+  vm.industries = [{
+    id: 1,
+    name: "New Home Builder"
+  },
+  {
+    id: 1,
+    name: "Real Estate Developer"
+  },
+  {
+    id: 1,
+    name: "Real Estate Builder"
+  },
+  {
+    id: 1,
+    name: "Interior Design"
+  }];
+
+
   var webProperties = function(data) {
     var properties = [];
     for (var i = 0; i < data.length; i++) {
       properties.push({
-        id: data[i].name,
-        name: data[i].id
+        name: data[i].name,
+        id: data[i].id
       });
     }
     return properties;
@@ -31,15 +50,38 @@ function accountController($scope, $http, $route, $routeParams, $location, local
       .then(onSuccess, onFailure);
 
     function onSuccess(response) {
+
       console.log('hello');
       vm.account.details = response.data;
       vm.account.finder = webProperties(vm.account.details);
+      vm.account.approved = vm.account.ids;
 
 
 
       vm.submitAccountsForm = function(){
-        vm.account.approved = {};
-        vm.account.approved.push(vm.account.ids);
+
+        vm.account.approved = vm.account.ids;
+
+        $http.post('http://www.localhost:3000/users/analytics', {
+          data: {
+            account: {
+              id: vm.account.approved,
+              industry: vm.selectedIndustry
+            },
+
+          }
+
+        })
+          .then(success, failure);
+
+        function success(response){
+          console.log('POST REQUEST COMPLETED!');
+        }
+
+        function failure(response){
+          console.log('POST REQUEST FAILED!');
+        }
+
       };
 
 
