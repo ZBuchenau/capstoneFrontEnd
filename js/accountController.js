@@ -107,7 +107,7 @@ function accountController($scope, $http, $route, $routeParams, $location, local
       vm.account.approved = vm.account.ids;
 
       vm.account.approved.industry = {};
-      vm.sites = {};
+      
 
       vm.submitAccountsForm = function(){
 

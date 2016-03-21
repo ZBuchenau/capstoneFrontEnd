@@ -6,7 +6,7 @@
     <input type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
     {{items.name}}
   </label>
-  {{ac.account.approved}}
+
   <br>
   <br>
 
@@ -15,12 +15,11 @@
     <div ng-repeat="item in ac.account.ids">
       <label>{{item.name}}</label>
 
-      <input type="hidden" name="property_id" value={{item.id}} ng-model="ac.sites[item.name].account_id">
+      <input type="hidden" name="property_id" ng-init="ac.sites[item.name].account_id = item.id" ng-model="ac.sites[item.name].account_id">
 
-      <input type="hidden" name="property_name" value={{item.name}} ng-model="ac.sites[item.name].account_name">
+      <input type="hidden" name="property_name" ng-init="ac.sites[item.name].account_name = item.name" ng-model="ac.sites[item.name].account_name">
 
       <!-- Select Industry -->
-
       <select name="industry_id" ng-model="ac.sites[item.name].industry" >
         <option value="" disabled selected>Select Industry</option>
         <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.name}}  {{industry.id}}</option>
