@@ -3,23 +3,71 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, localStorageService) {
   var vm = this;
 
-  vm.selectedIndustry = [];
+//**********************************************************************************************************
+
+  //ultimate goal of this controller/page, is to post an array of objects to the server that looks like this:
+
+  //data: [
+  // {id:12345, name:example.com, industry_id:4, region_id:4, budget_range_id: 3},
+  // {id:15432, name:anotherexample.com, industry_id:3, region_id:4, budget_range_id: 2}
+  // ];
+
+//**********************************************************************************************************
+
+
   vm.industries = [{
     id: 1,
     name: "New Home Builder"
   },
   {
-    id: 1,
+    id: 2,
     name: "Real Estate Developer"
   },
   {
-    id: 1,
+    id: 3,
     name: "Real Estate Builder"
   },
   {
-    id: 1,
+    id: 4,
     name: "Interior Design"
   }];
+
+  vm.regions = [{
+    id: 1,
+    name: "Colorado"
+  },
+  {
+    id: 2,
+    name: "Utah"
+  },
+  {
+    id: 3,
+    name: "Nevada"
+  },
+  {
+    id: 4,
+    name: "California"
+  }];
+
+  vm.budgets = [{
+    id: 1,
+    name: "$0 - $1,000"
+  },
+  {
+    id: 2,
+    name: "$1,001 - $3,500"
+  },
+  {
+    id: 3,
+    name: "$3,501 - $5,000"
+  },
+  {
+    id: 4,
+    name: "$5,000+"
+  }];
+
+
+
 
 
   var webProperties = function(data) {
@@ -39,6 +87,7 @@ function accountController($scope, $http, $route, $routeParams, $location, local
   // vm.account.data = '';
   // vm.account.names = {};
   vm.account.ids = [];
+  vm.account.industry = [];
 
   //set up the JWT in local storage
   localStorageService.set('FiveWeightAnalytics', vm.account.token);
@@ -54,23 +103,22 @@ function accountController($scope, $http, $route, $routeParams, $location, local
       console.log('hello');
       vm.account.details = response.data;
       vm.account.finder = webProperties(vm.account.details);
+
       vm.account.approved = vm.account.ids;
 
-
+      vm.account.approved.industry = {};
+      vm.sites = {};
 
       vm.submitAccountsForm = function(){
 
-        vm.account.approved = vm.account.ids;
+        // vm.account.approved.id =  vm.account.ids.id;
+        // vm.account.approved.name = vm.account.ids.name;
+        // vm.account.approved.industry = vm.account.ids.industry;
+
+
 
         $http.post('http://www.localhost:3000/users/analytics', {
-          data: {
-            account: {
-              id: vm.account.approved,
-              industry: vm.selectedIndustry
-            },
-
-          }
-
+          data: vm.sites
         })
           .then(success, failure);
 

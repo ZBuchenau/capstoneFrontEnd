@@ -2,28 +2,45 @@
 <input type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
 
-<form name="myForm" ng-submit="ac.submitAccountsForm()">
   <label for="account_id" ng-repeat="items in ac.account.finder">
     <input type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
     {{items.name}}
   </label>
-
+  {{ac.account.approved}}
   <br>
   <br>
 
-  <div ng-repeat="item in ac.account.approved">
-    <label for="industry_id">{{item.name}}</label>
-    <select class="industrySelector" name="industry_id" ng-model="ac.selectedIndustry">
-      <option ng-repeat="industry in ac.industries" value="ac.industries.id" placeholder="Select an Industry">{{industry.name}}</option>
-    </select>
-  </div>
+  <form name="myForm" ng-submit="ac.submitAccountsForm()">
 
-  <!--  -->
+    <div ng-repeat="item in ac.account.ids">
+      <label>{{item.name}}</label>
 
+      <input type="hidden" name="property_id" value={{item.id}} ng-model="ac.sites[item.name].account_id">
 
+      <input type="hidden" name="property_name" value={{item.name}} ng-model="ac.sites[item.name].account_name">
 
+      <!-- Select Industry -->
 
-  <input type="submit" name="name" value="SUBMIT" href='/user/profile'>
+      <select name="industry_id" ng-model="ac.sites[item.name].industry" >
+        <option value="" disabled selected>Select Industry</option>
+        <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.name}}  {{industry.id}}</option>
+      </select>
+
+      <!-- Select Region -->
+      <select name="industry_id" ng-model="ac.sites[item.name].region">
+         <option value="" disabled selected>Select Region</option>
+        <option ng-repeat="region in ac.regions" value="{{region.id}}">{{region.name}}  {{region.id}}</option>
+      </select>
+
+      <!-- Select Monthly Budget_Range -->
+      <select name="industry_id" ng-model="ac.sites[item.name].budget">
+         <option value="" disabled selected>Select Monthy Budget Range</option>
+        <option ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.name}}  {{budget.id}}</option>
+      </select>
+
+    </div>
+
+  <input type="submit" name="name" value="SUBMIT">
 </form>
 
 
