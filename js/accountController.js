@@ -107,15 +107,9 @@ function accountController($scope, $http, $route, $routeParams, $location, local
       vm.account.approved = vm.account.ids;
 
       vm.account.approved.industry = {};
-      
+
 
       vm.submitAccountsForm = function(){
-
-        // vm.account.approved.id =  vm.account.ids.id;
-        // vm.account.approved.name = vm.account.ids.name;
-        // vm.account.approved.industry = vm.account.ids.industry;
-
-
 
         $http.post('http://www.localhost:3000/users/analytics', {
           data: vm.sites
