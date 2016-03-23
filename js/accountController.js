@@ -3,6 +3,19 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService) {
   var vm = this;
 
+  // var dataGetter = function(dataName, param1, param2){
+  //   var dataToUse = param1;
+  //   for (var i = 0; i < dataName.length; i++) {
+  //     console.log(dataName[i].param2);
+  //     vm.dataName.push(dataName[i].param2);
+  //   }
+  // };
+
+
+  vm.industries = [];
+  vm.regions = [];
+  vm.budgets = [];
+
 //**********************************************************************************************************
 
   //ultimate goal of this controller/page, is to post an array of objects to the server that looks like this:
@@ -14,62 +27,6 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
 
 //**********************************************************************************************************
 
-
-  vm.industries = [{
-    id: 1,
-    name: "New Home Builder"
-  },
-  {
-    id: 2,
-    name: "Real Estate Developer"
-  },
-  {
-    id: 3,
-    name: "Real Estate Builder"
-  },
-  {
-    id: 4,
-    name: "Interior Design"
-  }];
-
-  vm.regions = [{
-    id: 1,
-    name: "Colorado"
-  },
-  {
-    id: 2,
-    name: "Utah"
-  },
-  {
-    id: 3,
-    name: "Nevada"
-  },
-  {
-    id: 4,
-    name: "California"
-  }];
-
-  vm.budgets = [{
-    id: 1,
-    name: "$0 - $1,000"
-  },
-  {
-    id: 2,
-    name: "$1,001 - $3,500"
-  },
-  {
-    id: 3,
-    name: "$3,501 - $5,000"
-  },
-  {
-    id: 4,
-    name: "$5,000+"
-  }];
-
-
-
-
-
   var webProperties = function(data) {
     var properties = [];
     for (var i = 0; i < data.length; i++) {
@@ -80,6 +37,53 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
     }
     return properties;
   };
+
+  $http.get('http://www.localhost:3000/data')
+    .then(dataSuccess, dataFailure)
+    .catch(function(err){
+      console.log('error');
+    });
+
+    function dataSuccess(response){
+      console.log(response);
+
+      var allData = response.data;
+
+      function budgetData(){
+        console.log(allData.budgets);
+        var budgets = allData.budgets;
+        for (var i = 0; i < budgets.length; i++) {
+          vm.budgets.push(budgets[i]);
+        }
+      }
+
+      function industriesData(){
+        console.log(allData.industries);
+        var industry = allData.industries;
+        for (var j = 0; j < industry.length; j++) {
+          vm.industries.push(industry[j]);
+        }
+      }
+
+      function regionsData(){
+        console.log(allData.regions);
+        var region = allData.regions;
+        for (var c = 0; c < region.length; c++) {
+          vm.regions.push(region[c]);
+        }
+      }
+
+      budgetData();
+      industriesData();
+      regionsData();
+
+    }
+
+
+
+    function dataFailure(response){
+      console.log('Data request failed!');
+    }
 
   vm.account = {};
   vm.account.token = $routeParams.token;
@@ -99,6 +103,8 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
       .then(onSuccess, onFailure);
 
     function onSuccess(response) {
+
+
 
       console.log('hello');
       vm.account.details = response.data;

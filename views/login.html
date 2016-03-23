@@ -34,7 +34,7 @@
       <!-- Select Monthly Budget_Range -->
       <select name="industry_id" ng-model="ac.sites[item.name].budget">
          <option value="" disabled selected>Select Monthy Budget Range</option>
-        <option ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.name}}  {{budget.id}}</option>
+        <option ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.id}}: {{budget.budget_range}} </option>
       </select>
 
     </div>
