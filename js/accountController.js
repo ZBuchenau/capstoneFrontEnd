@@ -1,6 +1,6 @@
-app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', 'localStorageService', accountController]);
+app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', accountController]);
 
-function accountController($scope, $http, $route, $routeParams, $location, localStorageService) {
+function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService) {
   var vm = this;
 
 //**********************************************************************************************************
@@ -112,6 +112,7 @@ function accountController($scope, $http, $route, $routeParams, $location, local
       vm.submitAccountsForm = function(){
 
         $http.post('http://www.localhost:3000/users/analytics', {
+          id: $window.atob(localStorage.getItem('ls.FiveWeightAnalytics').split('.')[1]),
           data: vm.sites
         })
           .then(success, failure);
