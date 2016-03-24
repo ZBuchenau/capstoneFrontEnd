@@ -1,5 +1,12 @@
-app.service('accountData', [function(){
+app.service('accountData', ['$http', function($http) {
 
-  var data = {};
+  return {
+    data: {},
 
+    getAccountData: function() {
+
+      return $http.post('http://www.localhost:3000/users/analytics/accounts', this.data);
+
+    }
+  };
 }]);

@@ -124,7 +124,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
           .then(success, failure);
 
         function success(response){
-          accountData.accountData = vm.sites;
+          accountData.data = vm.sites;
           console.log('POST REQUEST COMPLETED!');
           console.log(vm.sites);
           $location.path('/user/profile');
