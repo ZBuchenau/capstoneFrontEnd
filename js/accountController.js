@@ -1,6 +1,6 @@
-app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', accountController]);
+app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', accountController]);
 
-function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService) {
+function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
   var vm = this;
 
   // var dataGetter = function(dataName, param1, param2){
@@ -124,22 +124,16 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
           .then(success, failure);
 
         function success(response){
+          accountData.accountData = vm.sites;
           console.log('POST REQUEST COMPLETED!');
+          console.log(vm.sites);
+          $location.path('/user/profile');
         }
 
         function failure(response){
           console.log('POST REQUEST FAILED!');
         }
 
-      };
-
-
-      vm.checkAll = function(){
-        vm.account.ids = angular.copy('vm.account.finder');
-      };
-
-      vm.uncheckAll = function(){
-        vm.account.ids = [];
       };
 
     }
