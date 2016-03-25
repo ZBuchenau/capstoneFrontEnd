@@ -2,9 +2,9 @@
 <input type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
 
-  <label for="account_id" ng-repeat="items in ac.account.finder">
+  <label for="account_id" ng-repeat="items in ac.account.properties">
     <input type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
-    {{items.name}}
+    {{items.url}}
   </label>
 
   <br>
@@ -13,7 +13,7 @@
   <form name="myForm" ng-submit="ac.submitAccountsForm()">
 
     <div ng-repeat="item in ac.account.ids">
-      <label>{{item.name}}</label>
+      <label>{{item.url}}</label>
 
       <input type="hidden" name="property_id" ng-init="ac.sites[item.name].account_id = item.id" ng-model="ac.sites[item.name].account_id">
 
@@ -22,13 +22,13 @@
       <!-- Select Industry -->
       <select name="industry_id" ng-model="ac.sites[item.name].industry" >
         <option value="" disabled selected>Select Industry</option>
-        <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.name}}  {{industry.id}}</option>
+        <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.id}}: {{industry.name}}</option>
       </select>
 
       <!-- Select Region -->
       <select name="industry_id" ng-model="ac.sites[item.name].region">
          <option value="" disabled selected>Select Region</option>
-        <option ng-repeat="region in ac.regions" value="{{region.id}}">{{region.name}}  {{region.id}}</option>
+        <option ng-repeat="region in ac.regions" value="{{region.id}}">{{region.id}}: {{region.name}}</option>
       </select>
 
       <!-- Select Monthly Budget_Range -->
