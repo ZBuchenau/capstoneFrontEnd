@@ -1,13 +1,37 @@
-<h1>This is the page that will contain all the graphs</h1>
-
-
+<h1>View Your Data Compared to Your Industry</h1>
 
 <form name="myForm" ng-submit="pc.coreData(pc.site)">
 
-  <select name="account" ng-model="pc.site" >
+  <select name="account" ng-model="pc.site">
     <option value="" disabled selected>Select Account</option>
-    <option ng-repeat="account in pc.allAccounts" value="{{account}}" >{{account.account_name}}</option>
+    <option ng-repeat="account in pc.allAccounts" value="{{account}}">{{account.account_name}}</option>
   </select>
 
-<input type="submit" name="name" value="SUBMIT">
+  <input type="submit" name="name" value="SUBMIT">
 </form>
+
+<!-- {{pc.dates}}
+{{pc.sessions}}
+{{pc.users}}
+{{pc.sessionsPerUser}}
+{{pc.newSessions}}
+{{pc.pageviews}}
+{{pc.pagesPerSession}}
+{{pc.atos}}
+{{pc.bounceRate}} -->
+
+
+{{pc.site}}
+
+  <canvas id="line"
+    class="chart chart-line"
+    height="200"
+    width="400"
+    chart-data="pc.sessions"
+    chart-labels="pc.dates"
+    chart-legend="true"
+    chart-series="pc.series">
+  </canvas>
+
+<!-- <canvas id="line" class="chart chart-line" chart-data="pc.data" chart-labels="pc.labels"
+    chart-legend="true" chart-series="pc.series" chart-click="onClick"></canvas> -->

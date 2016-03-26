@@ -1,15 +1,35 @@
 app.controller('profileController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', profileController]);
 
-function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
+function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, d3) {
   var vm = this;
+
+  vm.series = [];
+
+
+  vm.dataObject = accountData.data;
+  chartData = [];
+  vm.dates = [];
+  vm.sessions = [[]];
+  vm.users = [[]];
+  vm.sessionsPerUser = [[]];
+  vm.newSessions = [[]];
+  vm.pageviews = [[]];
+  vm.pagesPerSession = [[]];
+  vm.atos = [[]];
+  vm.bounceRate = [[]];
 
 //========================================================================================
 // Return all accounts our app has access to for that user.
 //========================================================================================
-  vm.accounts = accountData.getAccountData().then(onSuccess, onFailure);
+  vm.accounts = accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
 
     function onSuccess(response) {
+      console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+      console.log(response);
+      vm.series = [response.data[0].account_name];
+      console.log(vm.series);
       vm.allAccounts = response.data;
+      return vm.allAccounts;
     }
 
     function onFailure(response) {
@@ -21,16 +41,41 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 // Making a request to the server to return 30 days worth of data for the selected account.
 //=========================================================================================
   vm.coreData = function(param){
-    console.log(param);
+    // console.log(param);
     accountData.getCoreData(param).then(success, failure);
 
       function success(response) {
-        console.log(response);
-      }
+        chartData.push(response.data);
+        vm.seriesOne = vm.site.account_name;
+        console.log('This is the chart data: ', chartData[0]);
+        var graphData = chartData[0];
+
+        for(var i = 0; i < graphData.length; i++){
+            vm.dates.push(graphData[i].date);
+            vm.sessions[0].push(graphData[i].sessions);
+            vm.users[0].push(graphData[i].users);
+            vm.sessionsPerUser[0].push(graphData[i].sessions_per_user);
+            vm.pageviews[0].push(graphData[i].pageviews);
+            vm.pagesPerSession[0].push(graphData[i].pages_per_session);
+            vm.atos[0].push(graphData[i].atos);
+            vm.bounceRate[0].push(graphData[i].bounce_rate);
+            vm.newSessions[0].push(graphData[i].new_sessions);
+          }
+        }
 
       function failure(response) {
         console.log('ERROR');
       }
   };
+
+  vm.labels = vm.dates;
+  // vm.series = ['1', '2'];
+  vm.data = vm.sessions;
+
+
+
+
+
+
 
 }
