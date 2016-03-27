@@ -3,9 +3,13 @@ app.controller('profileController', ['$scope', '$http', '$route', '$routeParams'
 function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, d3) {
   var vm = this;
 
+  vm.show = false;
+
   vm.series = [];
 
-
+  //========================================================================================
+  // This is all the user data that will eventually be used in the graphs
+  //========================================================================================
   vm.dataObject = accountData.data;
   chartData = [];
   vm.dates = [];
@@ -18,13 +22,13 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   vm.atos = [[]];
   vm.bounceRate = [[]];
 
+
 //========================================================================================
 // Return all accounts our app has access to for that user.
 //========================================================================================
   vm.accounts = accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
 
     function onSuccess(response) {
-      console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
       console.log(response);
       vm.series = [response.data[0].account_name];
       console.log(vm.series);
@@ -39,6 +43,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 
 //=========================================================================================
 // Making a request to the server to return 30 days worth of data for the selected account.
+// On success, loop through the response, and push all items into their respective arrays.
 //=========================================================================================
   vm.coreData = function(param){
     // console.log(param);
@@ -48,6 +53,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
         chartData.push(response.data);
         vm.seriesOne = vm.site.account_name;
         console.log('This is the chart data: ', chartData[0]);
+        vm.show = true;
         var graphData = chartData[0];
 
         for(var i = 0; i < graphData.length; i++){
@@ -67,10 +73,6 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
         console.log('ERROR');
       }
   };
-
-  vm.labels = vm.dates;
-  // vm.series = ['1', '2'];
-  vm.data = vm.sessions;
 
 
 
