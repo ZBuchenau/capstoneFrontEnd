@@ -14,14 +14,14 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   vm.dataObject = accountData.data;
   chartData = [];
   vm.dates = [];
-  vm.sessions = [[]];
-  vm.users = [[]];
-  vm.sessionsPerUser = [[]];
-  vm.newSessions = [[]];
-  vm.pageviews = [[]];
-  vm.pagesPerSession = [[]];
-  vm.atos = [[]];
-  vm.bounceRate = [[]];
+  vm.sessions = [[],[]];
+  vm.users = [[],[]];
+  vm.sessionsPerUser = [[],[]];
+  vm.newSessions = [[],[]];
+  vm.pageviews = [[],[]];
+  vm.pagesPerSession = [[],[]];
+  vm.atos = [[],[]];
+  vm.bounceRate = [[],[]];
 
 
   //========================================================================================
@@ -31,7 +31,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 
   function onSuccess(response) {
     console.log(response);
-    vm.series = [response.data[0].account_name];
+    vm.series = [response.data[0].account_name, "Indsutry Average"];
     console.log(vm.series);
     vm.allAccounts = response.data;
     return vm.allAccounts;
@@ -49,18 +49,21 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   //Then, make a request to the server to return the average data for that I.R.B, as well as,
   //what budget range,
   //=========================================================================================
-  vm.coreData = function(param) {
 
     chartData = [];
     vm.dates = [];
-    vm.sessions = [[]];
-    vm.users = [[]];
-    vm.sessionsPerUser = [[]];
-    vm.newSessions = [[]];
-    vm.pageviews = [[]];
-    vm.pagesPerSession = [[]];
-    vm.atos = [[]];
-    vm.bounceRate = [[]];
+    vm.sessions = [[],[]];
+    vm.users = [[],[]];
+    vm.sessionsPerUser = [[],[]];
+    vm.newSessions = [[],[]];
+    vm.pageviews = [[],[]];
+    vm.pagesPerSession = [[],[]];
+    vm.atos = [[],[]];
+    vm.bounceRate = [[],[]];
+
+  vm.coreData = function(param) {
+
+
 
     accountData.getCoreData(param).then(success, failure);
 
@@ -101,18 +104,24 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 
     function succ(response){
       console.log('Industry Data Response: ');
-      console.log(response);
+      console.log(response.data);
+
+      for(var i = 0; i < 30; i++){
+        vm.sessions[1].push(response.data.sessions);
+        vm.users[1].push(response.data.users);
+        vm.sessionsPerUser[1].push(response.data.sessionsPerUser);
+        vm.pageviews[1].push(response.data.pageviews);
+        vm.pagesPerSession[1].push(response.data.pagesPerSession);
+        vm.atos[1].push(response.data.atos);
+        vm.bounceRate[1].push(response.data.bounceRate);
+        vm.newSessions[1].push(response.data.newSessions);
+      }
+
     }
 
     function fail(response){
       console.log('Failed Industry Data Response');
     }
   };
-
-
-
-
-
-
 
 }

@@ -3,15 +3,6 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
   var vm = this;
 
-  // var dataGetter = function(dataName, param1, param2){
-  //   var dataToUse = param1;
-  //   for (var i = 0; i < dataName.length; i++) {
-  //     console.log(dataName[i].param2);
-  //     vm.dataName.push(dataName[i].param2);
-  //   }
-  // };
-
-
   vm.industries = [];
   vm.regions = [];
   vm.budgets = [];
@@ -107,12 +98,6 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
             var arr = obj[j].profiles;
             url = obj[j].websiteUrl.replace('http://', '');
 
-            // var str = 'this.those.that',
-            //   delimiter = '.',
-            //   start = 1,
-            //   tokens = str.split(delimiter).slice(start),
-            //   result = tokens.join(delimiter);
-
             for (var k = 0; k < arr.length; k++) {
 
               properties.push({
@@ -132,7 +117,6 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
 
       vm.account.properties = vm.account.finder();
 
-      // vm.account.ids = vm.account.properties;
       vm.account.approved = vm.account.ids;
       vm.account.approved.industry = {};
 
