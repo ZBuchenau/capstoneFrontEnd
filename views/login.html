@@ -1,3 +1,7 @@
+<a id="loginButton" href="http://localhost:3000/auth/google" >
+  <button type="button" name="login">LOG IN</button>
+</a>
+
 
 <input type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
@@ -20,19 +24,19 @@
       <input type="hidden" name="property_name" ng-init="ac.sites[item.url].account_name = item.url" ng-model="ac.sites[item.name].account_name">
 
       <!-- Select Industry -->
-      <select name="industry_id" ng-model="ac.sites[item.url].industry" >
+      <select name="industry_id" ng-model="ac.sites[item.url].industry" ng-class="{red : myForm.industry_id.$invalid" ng-required="true" >
         <option value="" disabled selected>Select Industry</option>
         <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.id}}: {{industry.name}}</option>
       </select>
 
       <!-- Select Region -->
-      <select name="industry_id" ng-model="ac.sites[item.url].region">
+      <select name="region_id" ng-model="ac.sites[item.url].region" ng-required="true" >
          <option value="" disabled selected>Select Region</option>
         <option ng-repeat="region in ac.regions" value="{{region.id}}">{{region.id}}: {{region.name}}</option>
       </select>
 
       <!-- Select Monthly Budget_Range -->
-      <select name="industry_id" ng-model="ac.sites[item.url].budget">
+      <select name="budget_id" ng-model="ac.sites[item.url].budget" ng-required="true" >
          <option value="" disabled selected>Select Monthy Budget Range</option>
         <option ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.id}}: {{budget.budget_range}} </option>
       </select>

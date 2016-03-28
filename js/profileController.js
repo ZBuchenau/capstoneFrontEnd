@@ -50,6 +50,10 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   //what budget range,
   //=========================================================================================
 
+
+
+  vm.coreData = function(param) {
+
     chartData = [];
     vm.dates = [];
     vm.sessions = [[],[]];
@@ -60,10 +64,6 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
     vm.pagesPerSession = [[],[]];
     vm.atos = [[],[]];
     vm.bounceRate = [[],[]];
-
-  vm.coreData = function(param) {
-
-
 
     accountData.getCoreData(param).then(success, failure);
 
@@ -100,6 +100,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   };
 
   vm.industryData = function(param){
+
     accountData.getIndustryData(param).then(succ, fail);
 
     function succ(response){

@@ -3,6 +3,8 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
   var vm = this;
 
+  vm.submitted = false;
+
   vm.industries = [];
   vm.regions = [];
   vm.budgets = [];
