@@ -1,18 +1,33 @@
-<a id="loginButton" href="http://localhost:3000/auth/google" >
-  <button type="button" name="login">LOG IN</button>
-</a>
+<nav>
+
+  <h2>  Living <span class="circle">•</span> Industry <span class="circle">•</span> Data</h2>
+
+  <a class="navButton" href="http://localhost:3000/auth/google">Refresh With Google</a>
+
+  <a class="navButton" href="#/user/profile/">My Comparisons</a>
+
+  <a class="navButton" href="#/user/profile/">Connect My Websites</a>
+
+</nav>
+
+<input class="navButton" type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
 
-<input type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
 
-  <label for="account_id" ng-repeat="items in ac.account.properties">
-    <input type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
-    {{items.url}}
-  </label>
 
-  <br>
-  <br>
+
+
+
+<div class="">
+
+  <div class="checkboxes">
+    <label class="checkboxes" for="accountCheckBox" ng-repeat="items in ac.account.properties">
+      <input class="accountCheckBox" type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
+      <span>{{items.url}}</span>
+    </label>
+  </div>
+
 
   <form name="myForm" ng-submit="ac.submitAccountsForm()">
 
@@ -45,6 +60,8 @@
 
   <input type="submit" name="name" value="SUBMIT">
 </form>
+
+</div>
 
 
 
