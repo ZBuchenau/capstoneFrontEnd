@@ -53,6 +53,7 @@ h2 {
 
 .circle {
   color: #FF6929;
+  font-size: 100%;
 }
 
 .your {
@@ -99,22 +100,26 @@ header {
   font-size: 150%;
   font-weight: 400;
   text-decoration: none;
-  border: .1rem solid #FF6929;
+  border: .1rem solid #c4c4c4;
   border-radius: 4px;
+}
+
+.signUpButton {
+  border-color: #FF6929;
 }
 
 .initBtn:link,
 .initBtn:visited {
   text-decoration: none;
-  /*border-bottom: 2px solid transparent;
-  transition: border-bottom .4s, color .4s, transform 1s;;*/
+  /*border-bottom: 2px solid transparent;*/
+  transition: border .4s, color .4s, transform 1s;
 }
 
 .initBtn:hover,
 .initBtn:active {
   text-decoration: none;
-  color: #c4c4c4;
-  border: 2px solid #c4c4c4;
+  color: #FF6929;
+  border: 2px solid #FF6929;
 }
 
 /* ------------------------------------------------- */
