@@ -45,6 +45,9 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   //=========================================================================================
   // Making a request to the server to return 30 days worth of data for the selected account.
   // On success, loop through the response, and push all items into their respective arrays.
+  //                          ********************************
+  //Then, make a request to the server to return the average data for that I.R.B, as well as,
+  //what budget range,
   //=========================================================================================
   vm.coreData = function(param) {
 
@@ -59,7 +62,6 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
     vm.atos = [[]];
     vm.bounceRate = [[]];
 
-    // console.log(param);
     accountData.getCoreData(param).then(success, failure);
 
     function success(response) {
@@ -68,9 +70,6 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
       console.log('This is the chart data: ', chartData[0]);
       vm.show = true;
       var graphData = chartData[0];
-
-
-
 
       for (var i = 0; i < graphData.length; i++) {
         var dateNumbers = graphData[i].date;
@@ -94,6 +93,19 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 
     function failure(response) {
       console.log('ERROR');
+    }
+  };
+
+  vm.industryData = function(param){
+    accountData.getIndustryData(param).then(succ, fail);
+
+    function succ(response){
+      console.log('Industry Data Response: ');
+      console.log(response);
+    }
+
+    function fail(response){
+      console.log('Failed Industry Data Response');
     }
   };
 

@@ -15,6 +15,13 @@ app.service('accountData', ['$http', function($http) {
       return $http.post('http://www.localhost:3000/users/analytics/coredata', parameter);
     },
 
-    chartData: []
+    chartData: [],
+
+    getIndustryData: function(parameter) {
+      return $http.post('http://www.localHost:3000/users/analytics/industrydata', parameter);
+    },
+
+    industryData: []
+    
   };
 }]);
