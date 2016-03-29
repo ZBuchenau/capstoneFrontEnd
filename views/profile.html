@@ -22,13 +22,11 @@
 
 
 <div class="lineGraph">
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Sessions</h2>
   </div>
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.sessions"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -37,15 +35,11 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Users</h2>
   </div>
-
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.users"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -55,15 +49,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
-    <h2>Sessions Per User</h2>
+  <div class="title" ng-show="pc.show">
+    <h2>Sessions Per User (Measured in Seconds)</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.sessionsPerUser"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -72,15 +63,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>New Sessions</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.newSessions"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -89,15 +77,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Pageviews</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.pageviews"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -106,15 +91,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Pages Per Session</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.pagesPerSession"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -123,15 +105,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Average Time On Site</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.atos"
     chart-labels="pc.dates"
     chart-legend="true"
@@ -140,15 +119,12 @@
 </div>
 
 <div class="lineGraph">
-
-  <div class="" ng-show="pc.show">
+  <div class="title" ng-show="pc.show">
     <h2>Bounce Rate %</h2>
   </div>
 
   <canvas id="line"
     class="chart chart-line"
-    height="200"
-    width="400"
     chart-data="pc.bounceRate"
     chart-labels="pc.dates"
     chart-legend="true"

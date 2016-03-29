@@ -22,6 +22,6 @@ app.service('accountData', ['$http', function($http) {
     },
 
     industryData: []
-    
+
   };
 }]);

@@ -266,3 +266,20 @@ select {
 .optionText {
   font-size: .8rem;
 }
+
+.lineGraph {
+  min-height: 50em;
+  height: 40vh;
+  width: 80%;
+  margin-top: 1rem;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.lineGraph .title h2 {
+  color: rgba(8,8,8,.7);
+  font-weight: 400;
+}
+/*.title {
+  margin-top: 3rem;
+}*/
