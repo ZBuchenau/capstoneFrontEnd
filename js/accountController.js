@@ -3,6 +3,7 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
   var vm = this;
 
+  vm.accountSubmit = false;
   vm.submitted = false;
 
   vm.industries = [];
@@ -136,6 +137,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
           console.log('POST REQUEST COMPLETED!');
           console.log(vm.sites);
           $location.path('/user/profile');
+          vm.accountSubmit = true;
         }
 
         function failure(response) {
@@ -143,6 +145,8 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
         }
 
       };
+
+      vm.accountSubmit = true;
 
     }
     // ============================================================

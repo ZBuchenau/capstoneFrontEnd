@@ -1,38 +1,39 @@
+
 <nav>
 
   <h2>  Living <span class="circle">•</span> Industry <span class="circle">•</span> Data</h2>
 
   <a class="navButton" href="http://localhost:3000/auth/google">Refresh With Google</a>
-
-  <a class="navButton" href="#/user/profile/">My Comparisons</a>
-
+  <a class="navButton" href="#/user/profile/">View My Comparisons</a>
   <a class="navButton" href="#/user/profile/">Connect My Websites</a>
 
 </nav>
 
-<input class="navButton" type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
+
+<input class="propertyButton" type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
 
-
-
-
-
-
-
-<div class="">
-
-  <div class="checkboxes">
+<div class="accountForm" ng-show="ac.accountSubmit">
+  <div class="checkboxes" >
     <label class="checkboxes" for="accountCheckBox" ng-repeat="items in ac.account.properties">
       <input class="accountCheckBox" type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
       <span>{{items.url}}</span>
     </label>
   </div>
+</div>
+
+<div class="addAccountForm">
+  <form name="myForm" ng-submit="ac.submitAccountsForm()" ng-show="ac.accountSubmit">
+
+    <div class="">
+      <input class="finalSubmit" type="submit" name="name" value="Connect Selected Accounts" >
+
+    </div>
 
 
-  <form name="myForm" ng-submit="ac.submitAccountsForm()">
 
-    <div ng-repeat="item in ac.account.ids">
-      <label>{{item.url}} {{item.id}}</label>
+    <div class="selectRow" ng-repeat="item in ac.account.ids">
+      <label>{{item.url}}</label>
 
       <input type="hidden" name="property_id" ng-init="ac.sites[item.url].account_id = item.id" ng-model="ac.sites[item.name].account_id">
 
@@ -41,40 +42,27 @@
       <!-- Select Industry -->
       <select name="industry_id" ng-model="ac.sites[item.url].industry" ng-class="{red : myForm.industry_id.$invalid" ng-required="true" >
         <option value="" disabled selected>Select Industry</option>
-        <option ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.id}}: {{industry.name}}</option>
+        <option class="optionText" ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.id}}: {{industry.name}}</option>
       </select>
 
       <!-- Select Region -->
       <select name="region_id" ng-model="ac.sites[item.url].region" ng-required="true" >
-         <option value="" disabled selected>Select Region</option>
-        <option ng-repeat="region in ac.regions" value="{{region.id}}">{{region.id}}: {{region.name}}</option>
+        <option value="" disabled selected>Select Region</option>
+        <option class="optionText" ng-repeat="region in ac.regions" value="{{region.id}}">{{region.id}}: {{region.name}}</option>
       </select>
 
       <!-- Select Monthly Budget_Range -->
       <select name="budget_id" ng-model="ac.sites[item.url].budget" ng-required="true" >
-         <option value="" disabled selected>Select Monthy Budget Range</option>
-        <option ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.id}}: {{budget.budget_range}} </option>
+        <option value="" disabled selected>Select Monthy Budget Range</option>
+        <option class="optionText" ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.id}}: {{budget.budget_range}} </option>
       </select>
 
     </div>
 
-  <input type="submit" name="name" value="SUBMIT">
-</form>
 
+
+
+</form>
 </div>
 
-
-
-
-
-
-<br>
-
-
-
-
-<!-- <input type="button" name="getData" value="Get Core Data" ng-click="ac.account.data()"> -->
-
-<!-- <pre>
-  {{ac.account.data}}
-</pre> -->
+<footer class="site-footer"></footer>

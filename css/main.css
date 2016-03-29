@@ -9,19 +9,22 @@
 }
 
 html {
-  background-color: #c4c4c4;
+  background-color: #FCFCFC;
   /*color: #555;*/
   font-family: 'Lato', 'Arial', sans-serif;
   font-weight: 300;
   font-size: 20px;
   text-rendering: optimizeLegibility;
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: 0;
-  background-color: #c4c4c4;
+  background-color: #FCFCFC;
+  height: 100%;
+  margin-bottom: -150px;
 }
 
 /* HEADINGS */
@@ -127,7 +130,7 @@ nav {
   margin-top: 0;
   margin-bottom: 30px;
   text-align: center;
-  background-color: rgba(8,8,8,.9);
+  background-color: rgba(8,8,8,.7);
   height: 15vh;
 }
 
@@ -138,7 +141,7 @@ nav h2 {
 
 .navButton {
   font-size: 140%;
-  font-weight: 350;
+  font-weight: 150;
   background: none;
   border: none;
   margin: 30px 30px;
@@ -159,6 +162,19 @@ nav h2 {
   border-bottom: .1rem solid #FF6929;
 }
 
+.propertyButton {
+  height: 2rem;
+  width: 30vw;
+  font-size: 150%;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: rgba(8,8,8,.3);
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 /* ------------------------------------------------- */
 /* Check Boxes */
@@ -170,6 +186,7 @@ nav h2 {
   padding-left: 15px;
   text-indent: -15px;
   vertical-align: middle;
+  font-size: .8rem;
 }
 
 .checkboxes label input {
@@ -184,6 +201,66 @@ nav h2 {
     *overflow: hidden;
 }
 
-input[type="checkbox"]:checked{
+input[type="checkbox"]{
   background-color: #FF6929;
+  height: 20px;
+  width: 20px;
+}
+
+.accountForm {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  overflow: hidden;
+}
+
+.addAccountForm {
+  position: absolute;
+  width: 70%;
+  top: 30%;
+  left: 25%;
+}
+
+.selectRow {
+  margin-top: 1rem;
+}
+
+.finalSubmit {
+  position: relative;
+  top: 0;
+  left: 80%;
+  padding: .2rem .2rem .2rem .2rem;
+  height: 2rem;
+  width: 70;
+  font-size: 140%;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: rgba(8,8,8,.3);
+  margin-top: 1rem;
+}
+
+select {
+   background: transparent;
+   width: auto;
+   height: 2.5rem;
+   padding: 5px;
+   font-size: 125%;
+   line-height: auto;
+   border: 0;
+   border-radius: 4px;
+   height: 34px;
+   /*-webkit-appearance: none;*/
+   border: 1px solid black;
+   background-size: .5rem .5rem;
+   background-position: 95%;
+   }
+
+.selectPhoto {
+  position: relative;
+  height: 2rem;
+  width: 2rem;
+}
+
+.optionText {
+  font-size: .8rem;
 }
