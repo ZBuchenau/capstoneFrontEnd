@@ -2,7 +2,9 @@ app.controller('profileController', ['$scope', '$http', '$route', '$routeParams'
 
 function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, d3) {
   var vm = this;
-
+  // accountData.getAccountData().then(function(response){
+    //use this response to populate the dropdown
+  // });
   vm.show = false;
   vm.site = {};
   // vm.series = [vm.site, "Industry Average"];
@@ -27,16 +29,11 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   //========================================================================================
   // Return all accounts our app has access to for that user.
   //========================================================================================
-  vm.accounts = accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
+  accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
 
   function onSuccess(response) {
-    // vm.site = [];
-    // console.log('vm.series: ');
-    // console.log(vm.site);
-    // vm.series = [response.data[0].account_name, "Indsutry Average"];
-    // console.log(vm.site);
+
     vm.allAccounts = response.data;
-    // vm.series = [vm.site.account_name, "Indsutry Average"];
 
     return vm.allAccounts;
   }

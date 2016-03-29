@@ -10,8 +10,6 @@
 
 <form class="getGraphs" name="myForm" ng-submit="pc.coreData(pc.site); pc.industryData(pc.site)">
 
-
-
   <select name="account" ng-model="pc.site">
     <option value="" disabled selected>Select Account</option>
     <option ng-repeat="account in pc.allAccounts" value="{{account}}">{{account.account_name}}</option>
@@ -20,6 +18,8 @@
   <input class="submit" type="submit" name="name" value="SUBMIT">
 
 </form>
+
+<br>
 
 
 <div class="lineGraph">
