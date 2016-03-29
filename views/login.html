@@ -14,16 +14,21 @@
 
 
 <div class="accountForm" ng-show="ac.accountSubmit">
+  
+    <h2>Check The Websites You Want To Connect</h2>
+
   <div class="checkboxes" >
     <label class="checkboxes" for="accountCheckBox" ng-repeat="items in ac.account.properties">
       <input class="accountCheckBox" type="checkbox" name="account_id" data-checklist-value="items" data-checklist-model="ac.account.ids">
-      <span>{{items.url}}</span>
+      <span>{{items.url}} ({{items.id}})</span>
     </label>
   </div>
 </div>
 
 <div class="addAccountForm">
   <form name="myForm" ng-submit="ac.submitAccountsForm()" ng-show="ac.accountSubmit">
+
+    <h2>Select Your Industry Identifiers</h2>
 
 
       <input class="finalSubmit" type="submit" name="name" value="Connect Selected Accounts" >
@@ -53,7 +58,7 @@
 
       <!-- Select Monthly Budget_Range -->
       <select name="budget_id" ng-model="ac.sites[item.url].budget" ng-required="true" >
-        <option value="" disabled selected>Select Monthy Budget Range</option>
+        <option value="" disabled selected>Select Monthly Marketing Budget</option>
         <option class="optionText" ng-repeat="budget in ac.budgets" value="{{budget.id}}">{{budget.id}}: {{budget.budget_range}} </option>
       </select>
 

@@ -6,19 +6,20 @@
 </nav>
 
 
+<h2 class="selectAccounts">Select an Account To Compare</h2>
 
-<form name="myForm" ng-submit="pc.coreData(pc.site); pc.industryData(pc.site)">
+<form class="getGraphs" name="myForm" ng-submit="pc.coreData(pc.site); pc.industryData(pc.site)">
+
+
 
   <select name="account" ng-model="pc.site">
     <option value="" disabled selected>Select Account</option>
     <option ng-repeat="account in pc.allAccounts" value="{{account}}">{{account.account_name}}</option>
   </select>
 
-  <input type="submit" name="name" value="SUBMIT">
+  <input class="submit" type="submit" name="name" value="SUBMIT">
 
 </form>
-
-<h3>pc.site: </h3>{{pc.site}}
 
 
 <div class="lineGraph">
@@ -64,7 +65,7 @@
 
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
-    <h2>New Sessions</h2>
+    <h2>New Sessions %</h2>
   </div>
 
   <canvas id="line"

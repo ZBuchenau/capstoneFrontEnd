@@ -4,8 +4,8 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   var vm = this;
 
   vm.show = false;
-  vm.site = [];
-  vm.series = [];
+  vm.site = {};
+  // vm.series = [vm.site, "Industry Average"];
 
   //========================================================================================
   // This is all the user data that will eventually be used in the graphs
@@ -31,12 +31,12 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
 
   function onSuccess(response) {
     // vm.site = [];
-    console.log('vm.series: ');
-    console.log(vm.site.account_name);
+    // console.log('vm.series: ');
+    // console.log(vm.site);
     // vm.series = [response.data[0].account_name, "Indsutry Average"];
     // console.log(vm.site);
     vm.allAccounts = response.data;
-    vm.series = [vm.site.account_name, "Indsutry Average"];
+    // vm.series = [vm.site.account_name, "Indsutry Average"];
 
     return vm.allAccounts;
   }
@@ -79,6 +79,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
       console.log('This is the chart data: ', chartData[0]);
       vm.show = true;
       var graphData = chartData[0];
+      vm.series = [JSON.parse(vm.site).account_name, "Industry"];
 
       for (var i = 0; i < graphData.length; i++) {
         var dateNumbers = graphData[i].date;

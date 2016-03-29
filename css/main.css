@@ -210,15 +210,26 @@ input[type="checkbox"]{
 .accountForm {
   position: absolute;
   top: 30%;
-  left: 5%;
+  left: 2%;
   overflow: hidden;
+}
+
+.accountForm h2 {
+  color: rgba(8,8,8,.7);
+  font-weight: 500;
+}
+
+.addAccountForm h2 {
+  color: rgba(8,8,8,.7);
+  font-weight: 500;
 }
 
 .addAccountForm {
   position: absolute;
   width: 70%;
   top: 30%;
-  left: 25%;
+  left: 30%;
+  text-align: center;
 }
 
 .selectRow {
@@ -228,7 +239,7 @@ input[type="checkbox"]{
 .finalSubmit {
   position: relative;
   top: 0;
-  left: 70%;
+  left: 0;
   padding: .2rem .2rem .2rem .2rem;
   height: 2rem;
   width: 70;
@@ -236,7 +247,7 @@ input[type="checkbox"]{
   box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   background-color: rgba(8,8,8,.3);
-  margin-top: 1rem;
+  margin-top: 0;
   border-color: #FF6929;
   border-width: .15rem;
 }
@@ -255,6 +266,7 @@ select {
    border: 1px solid black;
    background-size: .5rem .5rem;
    background-position: 95%;
+   margin-top: .5rem;
    }
 
 .selectPhoto {
@@ -271,15 +283,43 @@ select {
   min-height: 50em;
   height: 40vh;
   width: 80%;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: left;
   margin-left: 10%;
 }
 
 .lineGraph .title h2 {
   color: rgba(8,8,8,.7);
-  font-weight: 400;
+  font-weight: 500;
 }
-/*.title {
-  margin-top: 3rem;
-}*/
+
+.getGraphs {
+  position: absolute;
+  top: 21%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2rem;
+}
+
+.selectAccounts{
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(8,8,8,.7);
+  font-weight: 500;
+}
+
+.submit {
+  padding: .1rem .1rem .1rem .1rem;
+  margin-left: 1rem;
+  height: 2rem;
+  width: 70;
+  font-size: 140%;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: rgba(8,8,8,.3);
+  margin-top: 1rem;
+  border-color: #FF6929;
+  border-width: .1rem;
+}
