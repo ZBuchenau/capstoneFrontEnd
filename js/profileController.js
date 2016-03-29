@@ -4,14 +4,14 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   var vm = this;
 
   vm.show = false;
-
-  vm.series = [];
   vm.site = [];
+  vm.series = [];
 
   //========================================================================================
   // This is all the user data that will eventually be used in the graphs
   //========================================================================================
   vm.dataObject = accountData.data;
+
   chartData = [];
   vm.dates = [];
   vm.sessions = [[],[]];
@@ -30,10 +30,14 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   vm.accounts = accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
 
   function onSuccess(response) {
-    console.log(response);
-    vm.series = [response.data[0].account_name, "Indsutry Average"];
-    console.log(vm.series);
+    // vm.site = [];
+    console.log('vm.series: ');
+    console.log(vm.site.account_name);
+    // vm.series = [response.data[0].account_name, "Indsutry Average"];
+    // console.log(vm.site);
     vm.allAccounts = response.data;
+    vm.series = [vm.site.account_name, "Indsutry Average"];
+
     return vm.allAccounts;
   }
 
@@ -68,8 +72,10 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
     accountData.getCoreData(param).then(success, failure);
 
     function success(response) {
+
       chartData.push(response.data);
-      vm.seriesOne = vm.site.account_name;
+
+      console.log(vm.series);
       console.log('This is the chart data: ', chartData[0]);
       vm.show = true;
       var graphData = chartData[0];
@@ -117,7 +123,6 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
         vm.bounceRate[1].push(response.data.bounceRate);
         vm.newSessions[1].push(response.data.newSessions);
       }
-
     }
 
     function fail(response){

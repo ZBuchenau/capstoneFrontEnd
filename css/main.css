@@ -228,7 +228,7 @@ input[type="checkbox"]{
 .finalSubmit {
   position: relative;
   top: 0;
-  left: 80%;
+  left: 70%;
   padding: .2rem .2rem .2rem .2rem;
   height: 2rem;
   width: 70;
@@ -237,6 +237,8 @@ input[type="checkbox"]{
   border-radius: 4px;
   background-color: rgba(8,8,8,.3);
   margin-top: 1rem;
+  border-color: #FF6929;
+  border-width: .15rem;
 }
 
 select {
