@@ -13,7 +13,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
   localStorageService.set('FiveWeightAnalytics', vm.account.token);
 
   console.log('HERE I AM!!!!!!!!');
-  console.log(localStorageService.get('FiveWeightAnalytics'));
+
 
   vm.accountSubmit = false;
   vm.submitted = false;
@@ -132,8 +132,9 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
 
 
       vm.submitAccountsForm = function() {
-        var myToken = localStorageService.get('ls.FiveWeightAnalytics');
-        console.log(vm.sites);
+        var myToken = localStorageService.get('FiveWeightAnalytics');
+        console.log(vm.sites, 'hello World.');
+        console.log(myToken);
 
         $http.post('http://www.localhost:3000/users/analytics', {
             // id: $window.atob(localStorage.getItem('ls.FiveWeightAnalytics').split('.')[1]),
@@ -144,7 +145,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
 
         function success(response) {
           accountData.data = vm.sites;
-          console.log('POST REQUEST COMPLETED!');
+          console.log('POST REQUEST COMPLETED!', response);
           console.log(response);
           console.log(vm.sites);
           $location.path('/user/profile');

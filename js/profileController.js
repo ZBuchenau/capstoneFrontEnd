@@ -7,7 +7,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   // });
   vm.show = false;
   vm.site = {};
-  
+
   vm.id = {
     token: localStorageService.get('FiveWeightAnalytics')
   };
