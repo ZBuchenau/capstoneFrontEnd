@@ -1,4 +1,4 @@
-app.service('accountData', ['$http', function($http) {
+app.service('accountData', ['$http','localStorageService', '$location', function($http, localStorageService, $location) {
 
   return {
     data: {},
@@ -21,7 +21,9 @@ app.service('accountData', ['$http', function($http) {
       return $http.post('http://www.localHost:3000/users/analytics/industrydata', parameter);
     },
 
-    industryData: []
+    industryData: [],
+
+    token: ''
 
   };
 }]);

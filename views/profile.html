@@ -1,8 +1,9 @@
 <nav>
   <h2>  Living <span class="circle">•</span> Industry <span class="circle">•</span> Data</h2>
   <a class="navButton" href="http://localhost:3000/auth/google">Refresh With Google</a>
+  <a class="navButton" ng-href="#/user/profile/">Connect My Websites</a>
   <a class="navButton" href="#/user/profile/">View My Comparisons</a>
-  <a class="navButton" href="#/user/profile/">Connect My Websites</a>
+  <a class="navButton" ng-href="#" >Log Out</a>
 </nav>
 
 
@@ -21,7 +22,6 @@
 
 <br>
 
-
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
     <h2>Sessions</h2>
@@ -34,6 +34,8 @@
     chart-series="pc.series">
   </canvas>
 </div>
+
+<br>
 
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
@@ -49,6 +51,8 @@
   </canvas>
 </div>
 
+<br>
+
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
     <h2>Sessions Per User (Measured in Seconds)</h2>
@@ -62,6 +66,9 @@
     chart-series="pc.series">
   </canvas>
 </div>
+
+<br>
+
 
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
@@ -77,6 +84,9 @@
   </canvas>
 </div>
 
+<br>
+
+
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
     <h2>Pageviews</h2>
@@ -90,6 +100,9 @@
     chart-series="pc.series">
   </canvas>
 </div>
+
+<br>
+
 
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
@@ -105,6 +118,9 @@
   </canvas>
 </div>
 
+<br>
+
+
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
     <h2>Average Time On Site</h2>
@@ -119,6 +135,9 @@
   </canvas>
 </div>
 
+<br>
+
+
 <div class="lineGraph">
   <div class="title" ng-show="pc.show">
     <h2>Bounce Rate %</h2>
@@ -132,5 +151,6 @@
     chart-series="pc.series">
   </canvas>
 </div>
+
 
 <footer class="site-footer"></footer>

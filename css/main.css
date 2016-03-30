@@ -112,10 +112,12 @@ header {
   border-color: #FF6929;
 }
 
+
 .initBtn:link,
-.initBtn:visited {
+.initBtn:visited,
+.initBtn:focus {
   text-decoration: none;
-  /*border-bottom: 2px solid transparent;*/
+  color: #c4c4c4;
   transition: border .4s, color .4s, transform 1s;
 }
 
@@ -279,19 +281,37 @@ select {
   font-size: .8rem;
 }
 
+.lineGraph .title h2 {
+  color: rgba(8,8,8,.7);
+  font-weight: 500;
+  margin-top: 1.5rem;
+  width: 100%;
+  position: relative;
+}
+
 .lineGraph {
-  min-height: 50em;
-  height: 40vh;
+  position: relative;
+  max-height: 60em;
+  /*min-height: 50em;*/
   width: 80%;
   margin-top: 1.5rem;
   text-align: left;
   margin-left: 10%;
 }
 
-.lineGraph .title h2 {
-  color: rgba(8,8,8,.7);
-  font-weight: 500;
-}
+/*.chart-container {
+  position:relative;
+  margin-bottom: 20rem;
+}*/
+/*.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }*/
 
 .getGraphs {
   position: absolute;

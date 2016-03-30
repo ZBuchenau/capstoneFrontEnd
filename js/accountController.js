@@ -3,6 +3,18 @@ app.controller('accountController', ['$scope', '$http', '$route', '$routeParams'
 function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
   var vm = this;
 
+  vm.account = {};
+  vm.account.token = $routeParams.token;
+  accountData.token = vm.account.token;
+
+
+
+  //set up the JWT in local storage
+  localStorageService.set('FiveWeightAnalytics', vm.account.token);
+
+  console.log('HERE I AM!!!!!!!!');
+  console.log(localStorageService.get('FiveWeightAnalytics'));
+
   vm.accountSubmit = false;
   vm.submitted = false;
 
@@ -66,13 +78,8 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
     console.log('Data request failed!');
   }
 
-  vm.account = {};
-  vm.account.token = $routeParams.token;
   vm.account.ids = [];
   vm.account.industry = [];
-
-  //set up the JWT in local storage
-  localStorageService.set('FiveWeightAnalytics', vm.account.token);
 
   vm.account.search = function() {
 
@@ -125,9 +132,12 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
 
 
       vm.submitAccountsForm = function() {
+        var myToken = localStorageService.get('ls.FiveWeightAnalytics');
+        console.log(vm.sites);
 
         $http.post('http://www.localhost:3000/users/analytics', {
-            id: $window.atob(localStorage.getItem('ls.FiveWeightAnalytics').split('.')[1]),
+            // id: $window.atob(localStorage.getItem('ls.FiveWeightAnalytics').split('.')[1]),
+            id: myToken,
             data: vm.sites
           })
           .then(success, failure);
@@ -135,6 +145,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
         function success(response) {
           accountData.data = vm.sites;
           console.log('POST REQUEST COMPLETED!');
+          console.log(response);
           console.log(vm.sites);
           $location.path('/user/profile');
           vm.accountSubmit = true;

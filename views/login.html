@@ -4,17 +4,18 @@
   <h2>  Living <span class="circle">•</span> Industry <span class="circle">•</span> Data</h2>
 
   <a class="navButton" href="http://localhost:3000/auth/google">Refresh With Google</a>
-  <a class="navButton" href="#/user/profile/">View My Comparisons</a>
   <a class="navButton" href="#/user/profile/">Connect My Websites</a>
+  <a class="navButton" href="#/user/profile/">View My Comparisons</a>
+  <a class="navButton" href="#">Log Out</a>
 
 </nav>
 
-
+<!-- GET ACCOUNT PROPERTIES -->
 <input class="propertyButton" type="button" name="name" value="Get Account Properties" ng-click="ac.account.search()">
 
-
+<!-- CHECKBOXES -->
 <div class="accountForm" ng-show="ac.accountSubmit">
-  
+
     <h2>Check The Websites You Want To Connect</h2>
 
   <div class="checkboxes" >
@@ -25,15 +26,15 @@
   </div>
 </div>
 
+
+<!-- CONNECT SELECTED ACCOUNTS FORM -->
 <div class="addAccountForm">
   <form name="myForm" ng-submit="ac.submitAccountsForm()" ng-show="ac.accountSubmit">
 
     <h2>Select Your Industry Identifiers</h2>
 
 
-      <input class="finalSubmit" type="submit" name="name" value="Connect Selected Accounts" >
-
-
+    <input class="finalSubmit" type="submit" name="name" value="Connect Selected Accounts"></input>
 
 
 
@@ -45,7 +46,7 @@
       <input type="hidden" name="property_name" ng-init="ac.sites[item.url].account_name = item.url" ng-model="ac.sites[item.name].account_name">
 
       <!-- Select Industry -->
-      <select name="industry_id" ng-model="ac.sites[item.url].industry" ng-class="{red : myForm.industry_id.$invalid" ng-required="true" >
+      <select name="industry_id" ng-model="ac.sites[item.url].industry" ng-class="{red : myForm.industry_id.$invalid}" ng-required="true" >
         <option value="" disabled selected>Select Industry</option>
         <option class="optionText" ng-repeat="industry in ac.industries" value="{{industry.id}}" >{{industry.id}}: {{industry.name}}</option>
       </select>

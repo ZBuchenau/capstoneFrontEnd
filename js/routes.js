@@ -17,15 +17,16 @@ app.config(function($routeProvider) {
     templateUrl: '../views/login.html',
     controller: 'accountController as ac'
   })
+  .when('/user/profile/data', {
+    //this is the same route as before, just without the route paramaters in the url
+    templateUrl: '../views/login.html',
+    controller: 'accountController as ac'
+  })
   .when('/user/profile/', {
     // this is the page where the user will be able to see their accounts, and select which ones they will pull data for.
     // When they pull the data, the graphs will show up below the select accounts button.
     templateUrl: '../views/profile.html',
     controller: 'profileController as pc'
-  })
-  .when('/user/logout', {
-    templateUrl: '../views/logout.html',
-    controller: 'logoutController as lc'
   });
 
 });

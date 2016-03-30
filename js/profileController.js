@@ -7,6 +7,10 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   // });
   vm.show = false;
   vm.site = {};
+  
+  vm.id = {
+    token: localStorageService.get('FiveWeightAnalytics')
+  };
   // vm.series = [vm.site, "Industry Average"];
 
   //========================================================================================
@@ -29,13 +33,14 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   //========================================================================================
   // Return all accounts our app has access to for that user.
   //========================================================================================
-  accountData.getAccountData(vm.dataObject).then(onSuccess, onFailure);
+  accountData.getAccountData(vm.id).then(onSuccess, onFailure);
 
   function onSuccess(response) {
 
     vm.allAccounts = response.data;
+    accountData.allAccounts = response.data;
 
-    return vm.allAccounts;
+    return accountData.allAccounts;
   }
 
   function onFailure(response) {
@@ -56,6 +61,7 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
   vm.coreData = function(param) {
 
     chartData = [];
+    vm.series = [];
     vm.dates = [];
     vm.sessions = [[],[]];
     vm.users = [[],[]];
@@ -71,8 +77,8 @@ function profileController($scope, $http, $route, $routeParams, $location, $wind
     function success(response) {
 
       chartData.push(response.data);
-
-      console.log(vm.series);
+      vm.series = [];
+      // console.log(vm.series);
       console.log('This is the chart data: ', chartData[0]);
       vm.show = true;
       var graphData = chartData[0];

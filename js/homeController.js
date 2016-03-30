@@ -1,14 +1,11 @@
-app.controller('homeController', ['$scope', '$log', '$http', '$route', 'localStorageService',  '$routeParams', '$location', homeController]);
+app.controller('homeController', ['$scope', '$log', '$http', '$route', 'localStorageService', '$routeParams', '$location', homeController]);
 
 function homeController($scope, $log, $http, $route, localStorageService, $routeParams, $location) {
   var vm = this;
 
-  // $log.info($location.path);
-  // var favoriteCookie = $cookies.get('connect.sid');
-  vm.title = {};
-  vm.title.name = 'Example of 2-way binding';
+  // localStorageService.clearAll();
 
-  // vm.title.cookie = favoriteCookie;
+  vm.title = {};
 
   vm.accounts = {};
   vm.accounts.search = function() {
