@@ -1,6 +1,6 @@
-app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', accountController]);
+app.controller('accountController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', 'server', accountController]);
 
-function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData) {
+function accountController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, server) {
   var vm = this;
 
   vm.account = {};
@@ -34,7 +34,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
   //**********************************************************************************************************
 
 
-  $http.get('http://www.localhost:3000/data')
+  $http.get('https://lid.herokuapp.com/data')
     .then(dataSuccess, dataFailure)
     .catch(function(err) {
       console.log('error');
@@ -84,7 +84,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
   vm.account.search = function() {
 
     //makes the call to the backend which in turn, makes the call to the proper google endpoints.
-    $http.get('http://www.localhost:3000/users/analytics')
+    $http.get('https://lid.herokuapp.com/users/analytics')
       .then(onSuccess, onFailure);
     // ============================================================
     function onSuccess(response) {
@@ -136,7 +136,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
         console.log(vm.sites, 'hello World.');
         console.log(myToken);
 
-        $http.post('http://www.localhost:3000/users/analytics', {
+        $http.post('https://lid.herokuapp.com/users/analytics', {
             // id: $window.atob(localStorage.getItem('ls.FiveWeightAnalytics').split('.')[1]),
             id: myToken,
             data: vm.sites
@@ -175,7 +175,7 @@ function accountController($scope, $http, $route, $routeParams, $location, $wind
   vm.account.data = function() {
 
     //makes the call to the backend which in turn, makes the call to the proper google endpoints.
-    $http.get('http://www.localhost:3000/users/analytics/coredata')
+    $http.get('https://lid.herokuapp.com/users/analytics/coredata')
       .then(onSuccess, onFailure);
 
     function onSuccess(response) {

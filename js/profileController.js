@@ -1,6 +1,6 @@
-app.controller('profileController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', profileController]);
+app.controller('profileController', ['$scope', '$http', '$route', '$routeParams', '$location', '$window', 'localStorageService', 'accountData', 'server', profileController]);
 
-function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, d3) {
+function profileController($scope, $http, $route, $routeParams, $location, $window, localStorageService, accountData, server) {
   var vm = this;
   // accountData.getAccountData().then(function(response){
     //use this response to populate the dropdown

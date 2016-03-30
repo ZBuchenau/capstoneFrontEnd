@@ -1,6 +1,6 @@
-app.controller('homeController', ['$scope', '$log', '$http', '$route', 'localStorageService', '$routeParams', '$location', homeController]);
+app.controller('homeController', ['$scope', '$log', '$http', '$route', 'localStorageService', '$routeParams', '$location', 'server', homeController]);
 
-function homeController($scope, $log, $http, $route, localStorageService, $routeParams, $location) {
+function homeController($scope, $log, $http, $route, localStorageService, $routeParams, $location, server) {
   var vm = this;
 
   // localStorageService.clearAll();
@@ -12,7 +12,7 @@ function homeController($scope, $log, $http, $route, localStorageService, $route
 
     vm.display = 'Awaiting Response...';
 
-    $http.get('http://www.localhost:3000/users/analytics')
+    $http.get(server + '/users/analytics')
       .then(onSuccess, onFailure);
 
     function onSuccess(response) {

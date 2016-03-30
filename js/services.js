@@ -1,4 +1,4 @@
-app.service('accountData', ['$http','localStorageService', '$location', function($http, localStorageService, $location) {
+app.service('accountData', ['$http','localStorageService', '$location', 'server', function($http, localStorageService, $location, server) {
 
   return {
     data: {},
@@ -7,18 +7,18 @@ app.service('accountData', ['$http','localStorageService', '$location', function
       console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
       console.log(this.data);
 
-      return $http.post('http://www.localhost:3000/users/analytics/accounts', param);
+      return $http.post(server + '/users/analytics/accounts', param);
 
     },
 
     getCoreData: function(parameter) {
-      return $http.post('http://www.localhost:3000/users/analytics/coredata', parameter);
+      return $http.post(server + '/users/analytics/coredata', parameter);
     },
 
     chartData: [],
 
     getIndustryData: function(parameter) {
-      return $http.post('http://www.localHost:3000/users/analytics/industrydata', parameter);
+      return $http.post(server + '/users/analytics/industrydata', parameter);
     },
 
     industryData: [],
