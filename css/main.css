@@ -134,6 +134,7 @@ nav {
   text-align: center;
   background-color: rgba(8,8,8,.7);
   height: 15vh;
+  box-shadow: 0 0 2px 2.5px; 
 }
 
 nav h2 {
